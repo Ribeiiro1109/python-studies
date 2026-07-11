@@ -1,16 +1,26 @@
 """
-Python - Operadores Lógicos
+Python - Operador Lógico AND
 
-Os operadores lógicos são utilizados para combinar expressões booleanas
-(True ou False).
+O operador lógico `and` é utilizado para combinar duas ou mais condições.
 
-Operadores disponíveis:
+Uma expressão utilizando `and` será considerada verdadeira (True)
+somente quando todas as condições forem verdadeiras.
 
-and  -> Retorna True apenas se todas as condições forem verdadeiras.
-or   -> Retorna True se pelo menos uma condição for verdadeira.
-not  -> Inverte o valor lógico de uma expressão.
+Se pelo menos uma condição for falsa (False), toda a expressão
+será considerada falsa.
 
-Valores considerados False (falsy):
+Sintaxe:
+
+condicao1 and condicao2
+
+Exemplos:
+
+True and True    -> True
+True and False   -> False
+False and True   -> False
+False and False  -> False
+
+Em Python, alguns valores são considerados falsos (falsy):
 
 - 0
 - 0.0
@@ -18,7 +28,7 @@ Valores considerados False (falsy):
 - False
 - None
 
-Qualquer outro valor é considerado True (truthy).
+Qualquer outro valor é considerado verdadeiro (truthy).
 """
 
 # ==========================================================
@@ -33,18 +43,22 @@ senha = int(senha)
 
 senha_permitida = 123456
 
-# O Python avalia as condições da esquerda para a direita.
-# Se uma condição do operador "and" for False,
-# as demais podem nem ser avaliadas.
 # O operador "and" exige que todas as condições sejam verdadeiras.
+#
+# Neste exemplo:
+# - O usuário precisa escolher a opção "E";
+# - A senha informada deve ser igual à senha permitida.
+#
+# Somente quando as duas condições forem verdadeiras
+# o acesso será liberado.
 if entrada == "E" and senha == senha_permitida:
-    print("Você entrou.")
+    print("Você entrou no sistema.")
 
 elif entrada == "E" and senha != senha_permitida:
     print("Senha incorreta.")
 
 elif entrada == "S":
-    print("Você saiu.")
+    print("Você saiu do sistema.")
 
 else:
     print("Opção inválida.")
@@ -52,14 +66,23 @@ else:
 print()
 
 # ==========================================================
-# Exemplo 2 - Operador AND
+# Exemplo 2 - Utilizando o operador AND
 # ==========================================================
 
-# O resultado será True apenas quando todas as expressões
-# forem verdadeiras.
-print(True and False and True)
-print(True and True and False)
-print(False and True and True)
+# Todas as condições precisam ser verdadeiras para que
+# o resultado final seja True.
+
+print(True and True)       # True
+print(True and False)      # False
+print(False and True)      # False
+print(False and False)     # False
+
+print()
+
+# O mesmo comportamento ocorre quando há mais de duas condições.
+print(True and True and True)        # True
+print(True and False and True)       # False
+print(True and True and False)       # False
 
 print()
 
@@ -69,7 +92,26 @@ print()
 
 # A função bool() mostra como o Python interpreta um valor
 # em um contexto booleano.
+
 print(bool(0))
-print(bool(""))
 print(bool(0.0))
+print(bool(""))
+print(bool(False))
 print(bool(None))
+
+print()
+
+# ==========================================================
+# Importante
+# ==========================================================
+
+# O Python avalia as condições da esquerda para a direita.
+# Assim que encontra um valor falso em uma expressão com "and",
+# ele pode interromper a avaliação das demais condições.
+#
+# Esse comportamento é conhecido como "short-circuit evaluation"
+# (avaliação de curto-circuito).
+
+print(False and True)
+print(False and False)
+print(True and False)
