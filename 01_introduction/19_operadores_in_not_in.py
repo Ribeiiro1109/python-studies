@@ -73,3 +73,17 @@ print("r" in nome)   # True
 print("B" in nome)   # False
 
 # Isso acontece porque "B" e "b" são caracteres diferentes.
+
+print()
+
+# ==========================================================
+# Exemplo 4 - Verificando uma letra informada pelo usuário
+# ==========================================================
+
+nome = input("Digite um nome: ")
+letra = input("Digite uma letra: ")
+
+if letra in nome:
+    print(f'A letra "{letra}" foi encontrada em "{nome}".')
+else:
+    print(f'A letra "{letra}" não foi encontrada em "{nome}".')
